@@ -1,0 +1,6 @@
+---
+user:
+  login: lab2user
+  password: '$6$jXAKMqxnmaiEXQ$kJ18sq9CBjrTICtiMxV37VHCA4IC0uq0NSui24rNI/2LEv4IdggurWKWyhhqbmx1tct7CTx.E.H5wowHhY3Qt.'
+  group: lab2group
+  directory: lab2dir

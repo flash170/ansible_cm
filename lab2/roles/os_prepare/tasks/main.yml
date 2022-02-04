@@ -1,0 +1,30 @@
+---
+- name: Create Group and User
+  block:
+    - name: Create Group
+      group:
+        name: "{{ user.group }}"
+
+
+    - name: Create user
+      user:
+        name: "{{ user.login }}"
+        password: "{{ user.password }}"
+        shell: /bin/bash
+        group: "{{ user.group }}"
+
+    - name: Create directory
+      file:
+        path: "/home/{{ user.login }}/{{ user.directory }}"
+        state: directory
+
+  rescue:
+    - name: Rollback changes if need
+      command: date
+
+- name: Install package
+  package:
+    name:
+      - unzip
+      - iftop
+      - mc
