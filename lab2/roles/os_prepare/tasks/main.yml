@@ -18,6 +18,11 @@
         path: "/home/{{ user.login }}/{{ user.directory }}"
         state: directory
 
+    - name: Copy file
+      copy:
+        src: /home/yura/123.txt
+        dest: "/home/{{ user.login }}/123.txt"
+
   rescue:
     - name: Rollback changes if need
       command: date
