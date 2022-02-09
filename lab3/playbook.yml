@@ -1,0 +1,6 @@
+---
+- name:  Create User
+  hosts: server
+  become: true
+  roles:
+    - { role: WEB_prepare, tags: [prepere] }

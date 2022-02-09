@@ -1,0 +1,36 @@
+---
+- name: WEB install
+  block:
+    - name: Add nginx repo
+      apt_repository: repo='ppa:nginx/stable'
+
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: latest
+
+    - name: Install php-fpm and deps
+      apt: name={{ item }} state=present
+      with_items:
+        - php
+        - php-fpm
+        - php-mysql
+        - php-curl
+        - php-common
+
+    - name: Install Mysql package
+      apt: name={{ item }} state=present
+      with_items:
+        - mysql-server
+
+    - name: Download and unpack latest WordPress
+      unarchive:
+        src: https://wordpress.org/latest.tar.gz
+        dest: "/var/www/{{ WordPress.location }}"
+        remote_src: yes
+        creates: "/var/www//wordpress"
+
+  rescue:
+    - name: Rollback changes if need
+      command: date
+
