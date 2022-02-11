@@ -1,0 +1,20 @@
+---
+- name:  Create User
+  hosts: server
+  vars_files:
+    - ./vars/vault_webserver.yml
+  become: true
+  roles:
+    - { role: WEB_prepare, tags: [prepere] }
+
+- name: Restart php-fm
+  hosts: server
+  become: true
+  roles:
+    - { role: php_fm, tags: [restart] }
+
+- name: Restart nginx
+  hosts: server
+  become: true
+  roles:
+    - { role: nginx, tags: [restart] }
