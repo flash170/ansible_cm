@@ -1,0 +1,40 @@
+---
+- name: Create Group and User
+  block:
+    - name: Create Group
+      group:
+        name: "{{ user.group }}"
+
+
+    - name: Create user
+      user:
+        name: "{{ user.login }}"
+        password: "{{ user.password }}"
+        shell: /bin/bash
+        group: "{{ user.group }}"
+
+    - name: Create directory
+      file:
+        path: "/home/{{ user.login }}/{{ user.directory }}"
+        state: directory
+
+    - name: Copy file
+      copy:
+        src: /home/yura/123.txt
+        dest: "/home/{{ user.login }}/123.txt"
+
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: latest
+
+  rescue:
+    - name: Rollback changes if need
+      command: date
+
+- name: Install package
+  package:
+    name:
+      - unzip
+      - iftop
+      - mc
