@@ -1,0 +1,13 @@
+---
+- name: DB install
+  block:
+    - name: Install Mysql package
+      apt: name={{ item }} state=present
+      with_items:
+        - mysql-server
+
+
+  rescue:
+    - name: Rollback changes if need
+      command: date
+

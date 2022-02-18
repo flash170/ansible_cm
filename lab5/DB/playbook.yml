@@ -1,0 +1,7 @@
+---
+- name:  Insall DB
+  hosts: server
+  become: true
+  roles:
+    - { role: DB_prepare, tags: [prepere] }
+

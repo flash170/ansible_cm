@@ -1,0 +1,6 @@
+---
+WordPress:
+  download_url: https://wordpress.org/latest.tar.gz
+  wpdirectory: /var/www/
+  location: {root_dir}
+  

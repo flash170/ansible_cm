@@ -1,0 +1,6 @@
+---
+
+- name: Include a play after another play
+  import_playbook: ./DB/playbook.yml
+  import_playbook: ./nginx/playbook.yml
+  import_playbook: ./test/playbook.yml

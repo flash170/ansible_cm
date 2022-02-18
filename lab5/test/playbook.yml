@@ -1,0 +1,6 @@
+---
+- name: nginx
+  hosts: server
+  become: true
+  roles:
+    - { role: testweb, tags: [config] }

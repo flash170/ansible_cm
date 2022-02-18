@@ -1,0 +1,10 @@
+---
+WordPress:
+  download_url: https://wordpress.org/latest.tar.gz
+  wpdirectory: /var/www/
+  location: {root_dir}
+  listen_http: 80
+  nginx_user: www-data
+  worker_processes: 2
+  worker_connections: 512
+  
