@@ -6,4 +6,5 @@
   service:
     name: nginx
     state: started
+    delegate_to: 127.0.0.1
   when: ansible_facts.services['firewalld.service'].state == 'stopped'
