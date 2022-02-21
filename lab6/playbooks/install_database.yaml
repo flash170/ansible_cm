@@ -1,0 +1,8 @@
+---
+- hosts: database
+  user: yura
+  become: yes
+  vars_files:
+   - ../vars/database.yaml
+  roles:
+    - role: mysql
