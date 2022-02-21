@@ -12,6 +12,7 @@
         password: "{{ user.password }}"
         shell: /bin/bash
         group: "{{ user.group }}"
+        no_log: True
 
     - name: Create directory
       file:
