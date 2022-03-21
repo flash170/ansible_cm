@@ -1,0 +1,20 @@
+---
+- name: Create File
+  block:
+    - name: dir
+      file:
+        path: '/home/yura/123'
+        state: directory
+        mode: '0755'
+
+    - name:  file
+      file:
+        path: '/home/yura/123/123.txt'
+        state: touch
+
+    - name: date
+      shell: date > '/home/yura/123/123.txt'
+
+  rescue:
+    - name: Rollback changes if need
+      command: date

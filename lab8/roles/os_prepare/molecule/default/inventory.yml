@@ -1,0 +1,10 @@
+---
+all:
+  children:
+    os_prepare:
+      hosts:
+        127.0.0.1:
+      vars:
+        ansible_connection: local
+  vars:
+    foo: "bar"
